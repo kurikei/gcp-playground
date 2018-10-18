@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+mvn -Pdataflow-runner compile exec:java \
+      -Dexec.mainClass=org.apache.beam.examples.WordCount \
+      -Dexec.args="--project=$PROJECT_ID \
+      --stagingLocation=gs://${STORAGE_BUCKET_NAME}/staging/ \
+      --output=gs://${STORAGE_BUCKET_NAME}/output \
+      --runner=DataflowRunner"

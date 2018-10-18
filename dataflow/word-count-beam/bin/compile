@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+mvn compile exec:java \
+     -Dexec.mainClass=org.apache.beam.examples.WordCount \
+     -Dexec.args="--output=./output/"

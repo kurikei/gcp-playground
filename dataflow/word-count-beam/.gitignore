@@ -1,1 +1,3 @@
 .envrc.local
+target/
+output*

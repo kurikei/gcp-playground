@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "@google-cloud/storage": "~1",
-    "gm": "1.23.1"
+    "gm": "1.23.1",
+    "mime": "2.3.1",
+    "mime-types": "2.1.21"
   }
 }

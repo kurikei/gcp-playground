@@ -35,12 +35,26 @@ function resizeImage(file) {
     .then(() => {
       console.log(`Image ${file.name} has been resized.`);
 
+      return file.getMetadata().catch(err => {
+        console.error('Failed getMetadata.', err);
+        return Promise.reject(err);
+      });
+    })
+    .then(results => {
+      const metadata = results[0];
+      const ct = metadata.contentType;
+      console.log(`Detect contentType: ${ct}`);
+
       // Mark result as resized, to avoid re-triggering this function.
       const newName = `${file.name}-small`;
-
       // Upload the Resized image back into the bucket.
       return file.bucket
-        .upload(tempLocalPath, { destination: newName })
+        .upload(tempLocalPath, {
+          destination: newName,
+          metadata: {
+            contentType: ct,
+          },
+        })
         .catch(err => {
           console.error('Failed to upload resized image.', err);
           return Promise.reject(err);

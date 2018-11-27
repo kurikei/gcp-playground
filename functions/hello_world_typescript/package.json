@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build": "webpack --mode production"
+  },
   "devDependencies": {
     "ts-loader": "5.3.1",
     "typescript": "3.1.6",
